@@ -7,6 +7,7 @@ let Watch = {
     clockFaceSize: 300,
     digitSize: 10,
     countDigits: 12,
+    clockFaceCenterSize: 8,
   },
 
   init(accuracy) {
@@ -14,7 +15,7 @@ let Watch = {
     clockFace.classList.add("clock_face");
     clockFace.style.width = this.watchProperties.clockFaceSize + "px";
     clockFace.style.height = this.watchProperties.clockFaceSize + "px";
-    
+
     let wrapperForDigits = document.createElement("div");
     wrapperForDigits.classList.add("wrapper_digits");
     let radiusDigitsCircle = this.watchProperties.clockFaceSize / 2 - 20;
@@ -28,12 +29,25 @@ let Watch = {
       digit.style.height = this.watchProperties.digitSize + "px";
       let angleEachDigitRadians =
         (2 / this.watchProperties.countDigits) * i * Math.PI;
-      let left = (radiusDigitsCircle * Math.sin(angleEachDigitRadians) + radiusDigitsCircle) + "px";
-      let top = (radiusDigitsCircle * Math.cos(angleEachDigitRadians) + radiusDigitsCircle) + "px";
+      let left =
+        radiusDigitsCircle * Math.sin(angleEachDigitRadians) +
+        radiusDigitsCircle +
+        "px";
+      let top =
+        radiusDigitsCircle * Math.cos(angleEachDigitRadians) +
+        radiusDigitsCircle +
+        "px";
       digit.style.left = left;
       digit.style.top = top;
       wrapperForDigits.append(digit);
     }
+    
+    let clockFaceCenter = document.createElement("div");
+    clockFaceCenter.classList.add("center");
+    clockFaceCenter.style.width = this.watchProperties.clockFaceCenterSize + "px";
+    clockFaceCenter.style.height = this.watchProperties.clockFaceCenterSize + "px";
+    wrapperForDigits.append(clockFaceCenter);
+
     clockFace.append(wrapperForDigits);
     document.body.append(clockFace);
   },
