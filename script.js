@@ -119,7 +119,6 @@ let Watch = {
       this.watchProperties.minuteHand.style.transform = `rotate(${minutesHandPosition}deg)`;
 
       let hoursHandPosition = (360 * (hours + minutes * (1 / 60))) / 12 - 90;
-      /* (30 * (hours + (1 / 60) * minutes)) - 90; */
       this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
     };
   },
