@@ -52,3 +52,11 @@ body {
   z-index: 2;
   background-color: black;
 }
+
+.hours_hand {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  z-index: 2;
+  background-color: black;
+}
