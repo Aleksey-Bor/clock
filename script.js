@@ -70,7 +70,7 @@ let Watch = {
     this.watchProperties.secondHand.style.transformOrigin = "13px 50% 0";
     this.watchProperties.secondHand.style.transform = `rotate(${secondHandPosition}deg)`;
     wrapperForDigits.append(this.watchProperties.secondHand);
-    
+
     this.watchProperties.minuteHand = document.createElement("div");
     this.watchProperties.minuteHand.classList.add("minute_hand");
     this.watchProperties.minuteHand.style.width =
@@ -90,7 +90,7 @@ let Watch = {
     this.watchProperties.hoursHand.style.height =
       this.watchProperties.hoursHandThickness + "px";
     let hours = new Date().getHours();
-    let hoursHandPosition = (360 * hours) / 60 - 90;
+    let hoursHandPosition = (360 * (hours + minutes * (1 / 60))) / 12 - 90;
     this.watchProperties.hoursHand.style.transformOrigin = "13px 50% 0";
     this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
     wrapperForDigits.append(this.watchProperties.hoursHand);
@@ -113,12 +113,13 @@ let Watch = {
       let secondHandPosition = (360 * seconds) / 60 - 90;
       tikSong.play();
       this.watchProperties.secondHand.style.transform = `rotate(${secondHandPosition}deg)`;
-      console.log(seconds);
+      console.log(`${hours}:${minutes}:${seconds}`);
 
       let minutesHandPosition = (360 * minutes) / 60 - 90;
       this.watchProperties.minuteHand.style.transform = `rotate(${minutesHandPosition}deg)`;
 
-      let hoursHandPosition = (360 * hours) / 60 - 90;
+      let hoursHandPosition = (360 * (hours + minutes * (1 / 60))) / 12 - 90;
+      /* (30 * (hours + (1 / 60) * minutes)) - 90; */
       this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
     };
   },
