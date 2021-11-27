@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Digit; /* Имя шрифта */
+  src: url(assets/DS-DIGIB.TTF); /* Путь к файлу со шрифтом */
+}
+
 body {
   margin: 0px;
 }
@@ -20,7 +25,7 @@ body {
 }
 
 .digit {
-  border-radius:50%;
+  border-radius: 50%;
   background-color: lightgreen;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -59,4 +64,20 @@ body {
   left: 45%;
   z-index: 1;
   background-color: black;
+}
+
+.electronic_dial {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.electronic_dial {
+  font-family: Digit;
+  color: black;
+  background-color: lightgray;
+  padding: 2px;
+  width: 68px;
+  text-align: center;
 }

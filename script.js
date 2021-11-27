@@ -16,7 +16,10 @@ let Watch = {
     minuteHandThickness: 4,
     hoursHand: null,
     hoursHandLength: 110,
-    hoursHandThickness: 4,
+    hoursHandThickness: 5,
+    electronicDial: null,
+    /*     electronicDial: null,
+    electronicDial: null, */
   },
 
   init(accuracy) {
@@ -95,6 +98,10 @@ let Watch = {
     this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
     wrapperForDigits.append(this.watchProperties.hoursHand);
 
+    this.watchProperties.electronicDial = document.createElement("div");
+    this.watchProperties.electronicDial.classList.add("electronic_dial");
+    wrapperForDigits.append(this.watchProperties.electronicDial);
+
     clockFace.append(wrapperForDigits);
     document.body.append(clockFace);
 
@@ -104,6 +111,7 @@ let Watch = {
   _startWatch(accuracy) {
     let tik = setInterval(() => moveHands(), accuracy);
     let tikSong = new Audio("./assets/tik-tik.mp3");
+
     moveHands = () => {
       let time = new Date();
       let seconds = time.getSeconds();
@@ -120,6 +128,12 @@ let Watch = {
 
       let hoursHandPosition = (360 * (hours + minutes * (1 / 60))) / 12 - 90;
       this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
+
+      this.watchProperties.electronicDial.textContent = `${
+        hours < 10 ? "0" + hours : hours
+      } : ${minutes < 10 ? "0" + minutes : minutes} : ${
+        seconds < 10 ? "0" + seconds : seconds
+      }`;
     };
   },
 };
