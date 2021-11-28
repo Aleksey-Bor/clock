@@ -1,6 +1,6 @@
 "use script";
 
-const accuracy = 1000;
+const ACCURACY = 1000;
 
 let Watch = {
   watchProperties: {
@@ -20,7 +20,7 @@ let Watch = {
     electronicDial: null,
   },
 
-  init(accuracy) {
+  init(ACCURACY) {
     let clockFace = document.createElement("div");
     clockFace.classList.add("clock_face");
     clockFace.style.width = this.watchProperties.clockFaceSize + "px";
@@ -100,21 +100,14 @@ let Watch = {
     this.watchProperties.electronicDial.classList.add("electronic_dial");
     wrapperForDigits.append(this.watchProperties.electronicDial);
 
-    /*     this.watchProperties.electronicDigitsWrapper =
-      document.createElement("div");
-    this.watchProperties.electronicDigitsWrapper.classList.add(
-      "electronic_digits"
-    ); */
-    // electronicDial.append(this.watchProperties.electronicDigitsWrapper);
-
     clockFace.append(wrapperForDigits);
     document.body.append(clockFace);
 
-    this._startWatch(accuracy);
+    this._startWatch(ACCURACY);
   },
 
-  _startWatch(accuracy) {
-    let tik = setInterval(() => moveHands(), accuracy);
+  _startWatch(ACCURACY) {
+    let tik = setInterval(() => moveHands(), ACCURACY);
     let tikSong = new Audio("./assets/tik-tik.mp3");
 
     moveHands = () => {
@@ -143,5 +136,5 @@ let Watch = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  Watch.init(accuracy);
+  Watch.init(ACCURACY);
 });
