@@ -78,6 +78,12 @@ body {
   color: black;
   background-color: lightgray;
   padding: 2px;
-  width: 68px;
+  width: 9ch;
+  height: 2ch;
   text-align: center;
+}
+
+.electronic_dial > div {
+  display: inline-block;
+  width: 2ch;
 }

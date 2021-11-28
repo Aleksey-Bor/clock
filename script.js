@@ -18,8 +18,6 @@ let Watch = {
     hoursHandLength: 110,
     hoursHandThickness: 5,
     electronicDial: null,
-    /*     electronicDial: null,
-    electronicDial: null, */
   },
 
   init(accuracy) {
@@ -102,6 +100,13 @@ let Watch = {
     this.watchProperties.electronicDial.classList.add("electronic_dial");
     wrapperForDigits.append(this.watchProperties.electronicDial);
 
+    /*     this.watchProperties.electronicDigitsWrapper =
+      document.createElement("div");
+    this.watchProperties.electronicDigitsWrapper.classList.add(
+      "electronic_digits"
+    ); */
+    // electronicDial.append(this.watchProperties.electronicDigitsWrapper);
+
     clockFace.append(wrapperForDigits);
     document.body.append(clockFace);
 
@@ -129,11 +134,10 @@ let Watch = {
       let hoursHandPosition = (360 * (hours + minutes * (1 / 60))) / 12 - 90;
       this.watchProperties.hoursHand.style.transform = `rotate(${hoursHandPosition}deg)`;
 
-      this.watchProperties.electronicDial.textContent = `${
-        hours < 10 ? "0" + hours : hours
-      } : ${minutes < 10 ? "0" + minutes : minutes} : ${
-        seconds < 10 ? "0" + seconds : seconds
-      }`;
+      let hoursString = `${hours < 10 ? "0" + hours : hours}`;
+      let minutesString = `${minutes < 10 ? "0" + minutes : minutes}`;
+      let secondsString = `${seconds < 10 ? "0" + seconds : seconds}`;
+      this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
     };
   },
 };
