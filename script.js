@@ -103,7 +103,7 @@ let Watch = {
     let brand = document.createElement("div");
     brand.classList.add("brand");
     brand.innerHTML =
-      "<a  href='https://aleksey-bor.github.io/CV/'>&COPY; BARKOUSKI</a>";
+      "<a  href='https://aleksey-bor.github.io/CV/' target='blank' rel='noreferrer'>&COPY; BARKOUSKI</a>";
     wrapperForDigits.append(brand);
 
     clockFace.append(wrapperForDigits);
@@ -126,6 +126,7 @@ let Watch = {
       let seconds = time.getSeconds();
       let minutes = time.getMinutes();
       let hours = time.getHours();
+      let date = time.getDate();
       let month = time.getMonth();
 
       let secondHandPosition = (360 * seconds) / 60 - 90;
@@ -143,7 +144,7 @@ let Watch = {
       let secondsString = `${seconds < 10 ? "0" + seconds : seconds}`;
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
 
-      if (month === 10 && hours === 0 && minutes >= 0 && minutes < 6) {
+      if (month === 10 && date === 30 && hours === 0 && minutes >= 0 && minutes < 6) {
         body.className = "festive";
         congratulationText.className = "congratulation";
         let minutes = time.getMinutes();
