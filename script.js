@@ -150,7 +150,7 @@ let Watch = {
         _greetingSongPlay(minutes, seconds);
       } else {
         body.className = "everyday";
-        congratulationText.className = "congratulation";
+        congratulationText.className = "hidden";
       }
     };
 
