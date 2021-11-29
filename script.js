@@ -141,7 +141,7 @@ let Watch = {
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
 
       let body = document.getElementById("forSurprize");
-      if (month === 10 && hours === 15 && minutes >= 15 && minutes < 21) {
+      if (month === 10 && hours === 15 && minutes >= 30 && minutes < 36) {
         body.className = "festive";
         let minutes = time.getMinutes();
         _greetingSongPlay(minutes, seconds);
@@ -151,7 +151,7 @@ let Watch = {
     };
 
     _greetingSongPlay = (minutes, seconds) => {
-      if (minutes === 15 && seconds < 1) {
+      if (minutes === 30 && seconds < 1) {
         greetingSong.play();
       }
     };
