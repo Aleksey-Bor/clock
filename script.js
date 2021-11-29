@@ -113,6 +113,9 @@ let Watch = {
   },
 
   _startWatch(ACCURACY) {
+    let body = document.getElementById("forSurprize");
+    let congratulationText = document.getElementById("congratulation");
+
     let tikSong = new Audio("./assets/tik-tik.mp3");
     let greetingSong = new Audio("./assets/songs.mp3");
     document.body.prepend(greetingSong);
@@ -140,13 +143,14 @@ let Watch = {
       let secondsString = `${seconds < 10 ? "0" + seconds : seconds}`;
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
 
-      let body = document.getElementById("forSurprize");
       if (month === 10 && hours === 15 && minutes >= 30 && minutes < 36) {
         body.className = "festive";
+        congratulationText.className = "congratulation";
         let minutes = time.getMinutes();
         _greetingSongPlay(minutes, seconds);
       } else {
         body.className = "everyday";
+        congratulationText.className = "congratulation";
       }
     };
 
