@@ -3,8 +3,19 @@
   src: url(assets/DS-DIGIB.TTF); /* Путь к файлу со шрифтом */
 }
 
+@font-face {
+  font-family: NewYear; /* Имя шрифта */
+  src: url(assets/matterhorn_rus_by_me.ttf); /* Путь к файлу со шрифтом */
+}
+
 body {
   margin: 0px;
+  height: 100vh;
+}
+
+.festive {
+  background: url(./assets/fireworks.gif) no-repeat;
+  background-size: cover;
 }
 
 .clock_face {
@@ -83,7 +94,38 @@ body {
   text-align: center;
 }
 
+.brand {
+  font-family: Digit;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .electronic_dial > div {
   display: inline-block;
   width: 2ch;
+}
+
+.congratulation {
+  font-family: NewYear;
+  color: white;
+  text-align: center;
+  font-size: 80px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@media all and (max-width: 800px) {
+  .congratulation {
+    font-size: 60px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .congratulation {
+    font-size: 50px;
+  }
 }

@@ -100,6 +100,12 @@ let Watch = {
     this.watchProperties.electronicDial.classList.add("electronic_dial");
     wrapperForDigits.append(this.watchProperties.electronicDial);
 
+    let brand = document.createElement("div");
+    brand.classList.add("brand");
+    brand.innerHTML =
+      "<a  href='https://aleksey-bor.github.io/CV/'>&COPY; BARKOUSKI</a>";
+    wrapperForDigits.append(brand);
+
     clockFace.append(wrapperForDigits);
     document.body.append(clockFace);
 
@@ -107,19 +113,21 @@ let Watch = {
   },
 
   _startWatch(ACCURACY) {
-    let tik = setInterval(() => moveHands(), ACCURACY);
     let tikSong = new Audio("./assets/tik-tik.mp3");
+    let greetingSong = new Audio("./assets/songs.mp3");
+    document.body.prepend(greetingSong);
+    setInterval(() => _moveHands(), ACCURACY);
 
-    moveHands = () => {
+    _moveHands = () => {
       let time = new Date();
       let seconds = time.getSeconds();
       let minutes = time.getMinutes();
       let hours = time.getHours();
+      let month = time.getMonth();
 
       let secondHandPosition = (360 * seconds) / 60 - 90;
       tikSong.play();
       this.watchProperties.secondHand.style.transform = `rotate(${secondHandPosition}deg)`;
-      console.log(`${hours}:${minutes}:${seconds}`);
 
       let minutesHandPosition = (360 * minutes) / 60 - 90;
       this.watchProperties.minuteHand.style.transform = `rotate(${minutesHandPosition}deg)`;
@@ -131,6 +139,21 @@ let Watch = {
       let minutesString = `${minutes < 10 ? "0" + minutes : minutes}`;
       let secondsString = `${seconds < 10 ? "0" + seconds : seconds}`;
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
+
+      let body = document.getElementById("forSurprize");
+      if (month === 10 && hours === 15 && minutes >= 0 && minutes < 6) {
+        body.className = "festive";
+        let minutes = time.getMinutes();
+        _greetingSongPlay(minutes, seconds);
+      } else {
+        body.className = "everyday";
+      }
+    };
+
+    _greetingSongPlay = (minutes, seconds) => {
+      if (minutes === 0 && seconds < 1) {
+        greetingSong.play();
+      }
     };
   },
 };
