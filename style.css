@@ -133,6 +133,6 @@ body {
 @media all and (max-width: 450px) {
   .congratulation {
     font-size: 50px;
-    top: 10%;
+    top: 7%;
   }
 }

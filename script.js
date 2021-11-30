@@ -119,9 +119,9 @@ let Watch = {
     let tikSong = new Audio("./assets/tik-tik.mp3");
     let greetingSong = new Audio("./assets/songs.mp3");
     document.body.prepend(greetingSong);
-    setInterval(() => _moveHands(), ACCURACY);
+    setInterval(() => _showTime(), ACCURACY);
 
-    _moveHands = () => {
+    _showTime = () => {
       let time = new Date();
       let seconds = time.getSeconds();
       let minutes = time.getMinutes();
@@ -144,19 +144,29 @@ let Watch = {
       let secondsString = `${seconds < 10 ? "0" + seconds : seconds}`;
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
 
-      if (month === 10 && date === 29 && hours === 20 && minutes >= 45 && minutes < 51) {
-        body.className = "festive";
-        congratulationText.className = "congratulation";
-        _greetingSongPlay(minutes, seconds);
-      } else {
-        body.className = "everyday";
-        congratulationText.className = "hidden";
+      if (
+        month === 10 &&
+        date === 30 &&
+        hours === 22 &&
+        minutes >= 0 &&
+        minutes <= 6
+      ) {
+        _congratulateWithNewYear(minutes, seconds);
       }
     };
 
-    _greetingSongPlay = (minutes, seconds) => {
-      if (minutes === 45 && seconds < 1) {
-        greetingSong.play();
+    _congratulateWithNewYear = (minutes, seconds) => {
+      if (minutes >= 0 && minutes < 5 ) {
+        body.className = "festive";
+        congratulationText.className = "congratulation";
+        console.log(minutes, ":", seconds);
+        if (minutes === 0 && seconds < 1) {
+          greetingSong.play();
+        }
+      } else {
+        console.log("hi");
+        body.className = "everyday";
+        congratulationText.className = "hidden";
       }
     };
   },
