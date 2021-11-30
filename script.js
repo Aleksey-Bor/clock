@@ -145,9 +145,9 @@ let Watch = {
       this.watchProperties.electronicDial.innerHTML = `<div>${hoursString}</div> : <div>${minutesString}</div> : <div>${secondsString}</div>`;
 
       if (
-        month === 10 &&
-        date === 30 &&
-        hours === 22 &&
+        month === 0 &&
+        date === 1 &&
+        hours === 0 &&
         minutes >= 0 &&
         minutes <= 6
       ) {
@@ -156,15 +156,13 @@ let Watch = {
     };
 
     _congratulateWithNewYear = (minutes, seconds) => {
-      if (minutes >= 0 && minutes < 5 ) {
+      if (minutes >= 0 && minutes <= 5) {
         body.className = "festive";
         congratulationText.className = "congratulation";
-        console.log(minutes, ":", seconds);
         if (minutes === 0 && seconds < 1) {
           greetingSong.play();
         }
       } else {
-        console.log("hi");
         body.className = "everyday";
         congratulationText.className = "hidden";
       }
