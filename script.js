@@ -103,7 +103,7 @@ let Watch = {
     let brand = document.createElement("div");
     brand.classList.add("brand");
     brand.innerHTML =
-      "<a  href='https://aleksey-bor.github.io/CV/' target='blank' rel='noreferrer'>&COPY; BARKOUSKI</a>";
+      "<a  href='https://itka-school.github.io/AdvertisingFundamentalsWebsiteBuilding/' target='blank' rel='noreferrer'>&COPY; IT-School</a>";
     wrapperForDigits.append(brand);
 
     clockFace.append(wrapperForDigits);
